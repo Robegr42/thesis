@@ -14,6 +14,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 
+
 \RequirePackage[spanish,es-ucroman]{babel}
 \RequirePackage[refpage, intoc, spanish]{nomencl}
 \RequirePackage{graphicx}
@@ -22,8 +23,8 @@
 \RequirePackage{footmisc}
 \RequirePackage{csquotes}
 \RequirePackage[
-	style=apa,
-	citestyle=authoryear,
+	style=numeric,
+	citestyle=numeric,
   hyperref=true,
 	backref=true
 	]{biblatex}
@@ -74,6 +75,20 @@
 \renewcommand{\textfraction}{0.07}
 
 % Whole biblatex hyperref to bibliography
+\DeclareCiteCommand{\brackcite}[\mkbibbrackets]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \printtext[bibhyperref]{\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\brackcite}[\mkbibbrackets]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \printtext[bibhyperref]{\usebibmacro{citeyear}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
 \DeclareCiteCommand{\cite}
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
