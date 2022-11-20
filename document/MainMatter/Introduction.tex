@@ -2,38 +2,37 @@
 \addcontentsline{toc}{chapter}{Introducción}
 
 En los últimos años se ha hecho creciente el uso, investigación y aplicación
-del Aprendizaje Automático, en inglés \emph{Machine Learning}(ML). Sin embargo,
+del Aprendizaje de Máquina, en inglés \emph{Machine Learning}(ML). Sin embargo,
 el uso de estás técnicas está sujeto a conocimiento de mucha teoría
 matemático-computacional, lo cual constituye una barrera para nuevos usuarios.
 Por ejemplo, para científicos de esta rama, crear una aplicación de ML está
 sujeto a la selección de disímiles tipos de algoritmos(redes neuronales,
 modelos bayesianos, algoritmos de \emph{clustering}, etc) y, a la vez, a
-ajustar los númerosos hiperparámetros del algoritmo selecionado. Incluso en la
-mayoría de los casos se invierte una cantidad de enorme de tiempo y recursos en
-la creación de un modelo que se ajuste a los requerimientos del problema a
-causa del proceso de prueba y error que es repetido en cada aplicación para
-desarrollar modelos eficientes.
+ajustar los númerosos hiperparámetros del algoritmo selecionado. En la mayoría
+de los casos, a causa del proceso de prueba y error necesario para encontrar
+modelos eficientes se invierte una cantidad enorme de tiempo y recursos en
+la creación de un modelo que se ajuste a los requerimientos del problema
 
 Como consecuencia del costo de empleo de algoritmos y técnicas de ML, surge una
-nueva idea para automatizar el proceso de ML. El Aprendizaje de Máquina
-Automático, en inglés \emph{Automated Machine Learning}(AutoML). AutoML ha
-facilitado el proceso de implementación, despliegue, modelación y desarrollo de
-algoritmos de ML.
+nueva idea para automatizar el proceso de ML, evitando el proceso del costo de
+modelación y configuración de los hiperparámetros. El Aprendizaje de Máquina
+Automático, en inglés \emph{Automated Machine Learning}(AutoML) ha facilitado
+el proceso de implementación, despliegue, modelación y desarrollo de algoritmos
+de ML.
 
 El surgimiento de AutoML ha reducido la carga de trabajo de los científicos de
-datos y ha permitido un mayor consumo de aplicaciones, reduciendo el tiempo de
-ejecución de procesos, ayudando, además, a no expertos en el ámbito de la
-computación. Por lo tanto, AutoML hace accesible enfoques de aprendizaje
-automático a los usuarios no expertos que están interesados en aplicarlos,
-pero no tienen los recursos para aprender sobre las tecnologías involucradas
-en detalle o simplemente necesitan de estos recursos pero son de una rama
-distinta de la ciencia. Con el crecimiento exponencial del poder computacional
-y de los datos digitales, AutoML se ha convertido en un tema de creciente
-importancia tanto en la industria como en la academia.
+datos y ha permitido una mayor creación de modelos usando algoritmos de ML. De
+esta forma se reduce el tiempo de ejecución de procesos, ayudando, además, a no
+expertos en el ámbito de la computación. Por lo tanto, AutoML hace accesible
+enfoques de aprendizaje automático a los usuarios no expertos que están
+interesados en aplicarlos. Con el crecimiento exponencial del poder
+computacional y de la cantidad de datos datos que se generan en la actualidad,
+AutoML se ha convertido en un tema de creciente importancia tanto en la
+industria como en la academia.
 
-Aún así existe la incapacidad de poder reusar conocimiento previo que ya fue
-procesado. Una de las limitaciones presentes en los primeros sistemas de AutoML
-consiste en su inhabilidad de reusar conocimiento previo para solucionar nuevas
+Aún así existe una carencia en cuanto a reusar conocimiento previamente
+generado. Una de las limitaciones presentes en los primeros sistemas de AutoML
+es su falta de poder para reusar conocimiento previo para solucionar nuevas
 tareas. Para cerrar esta brecha, las herramientas de AutoML comenzaron a
 aplicar técnicas de meta-learning, las cuales tienen el objetivo de obtener
 modelos para nuevas tareas usando experiencias previas. Meta-learning, o
@@ -41,10 +40,10 @@ modelos para nuevas tareas usando experiencias previas. Meta-learning, o
 desempeñan los diferentes enfoques de aprendizaje automático en una amplia
 gama de tareas de aprendizaje, y luego aprender de esta experiencia, o
 meta-datos, para aprender nuevas tareas mucho más rápido de lo que sería
-posible de otra manera. Esto no solo acelera y mejora drásticamente el diseño
-de algoritmos de aprendizaje automático, sino que también nos permite
-reemplazar algoritmos diseñados a mano con enfoques novedosos aprendidos de una
-manera basada en datos. Este tipo de estrategias ayudan a disminuir el costo de
+posible de otra manera. Esto acelera y mejora drásticamente el diseño
+de algoritmos de aprendizaje automático. Además nos permite reemplazar
+algoritmos diseñados a mano con enfoques novedosos aprendidos de una manera
+basada en datos. Este tipo de estrategias ayudan a disminuir el costo de
 aplicar AutoML, al relacionar un nuevo conjunto de datos con los mejores flujos
 obtenidos en problemas similares previamente resueltos.\\
 
@@ -55,7 +54,7 @@ A pesar de la creciente cantidad de herramientas de AutoML desarrolladas en los
 computacionalmente costosa y toma mucho tiempo. Las razones de estos defectos
 incluyen un espacio de búsqueda muy grande, tanto para algoritmos simples de ML
 como para otras arquitecturas más complejas como redes neuronales, y que la
-evaluación de incluso un solo algoritmo en un dataset grande puede requerir
+evaluación de incluso un solo algoritmo en un conjunto de datos grande puede requerir
 horas. Esto hace que el proceso de desarrollo de modelos de ML siga siendo un
 proceso lento, limitando la aplicabilidad de AutoML a problemas prácticos en la
 industria, así como su potencial para acelerar la investigación científica.\\
@@ -72,7 +71,7 @@ algoritmos y las configuraciones de sus hiperparámetros.
 
 Mediante meta-learning, se intenta ganar perspectiva sacada de los meta-datos
 de experimentos de aprendizaje automático. Los resultados de cada entrenamiento
-son guardados con caracterizaciones del dataset y sus detalles de rendimiento,
+son guardados con caracterizaciones del conjunto de datos y sus detalles de rendimiento,
 y son usados en las ejecuciones futuras.
 
 Sin embargo, estas herramientas de meta-learning no son suficientemente
@@ -107,9 +106,9 @@ mismo período de tiempo. Para realizar esto será necesario:
     \item Estudiar diferentes herramientas de meta-learning, así como sistemas
     de Auto-ML presentes en la literatura.
     \item Definir una representación para las soluciones generadas de los
-    datasets.
+    conjuntos de datos.
     \item Diseñar un algoritmo para recomendar una lista de soluciones para un
-    nuevo dataset basado en estos datos.
+    nuevo conjunto de datos basado en estos datos.
     \item Incorporar el conocimiento previo obtenido con meta-learning en
     AutoGOAL para realizar una búsqueda de algoritmos más eficiente.
     
