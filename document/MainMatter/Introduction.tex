@@ -2,23 +2,25 @@
 \addcontentsline{toc}{chapter}{Introducción}
 
 En los últimos años se ha hecho creciente el uso, investigación y aplicación
-del Aprendizaje de Máquina, en inglés \emph{Machine Learning}(ML). Sin embargo,
-el uso de estás técnicas está sujeto a conocimiento de mucha teoría
-matemático-computacional, lo cual constituye una barrera para nuevos usuarios.
-Por ejemplo, para científicos de esta rama, crear una aplicación de ML está
-sujeto a la selección de disímiles tipos de algoritmos(redes neuronales,
-modelos bayesianos, algoritmos de \emph{clustering}, etc) y, a la vez, a
-ajustar los númerosos hiperparámetros del algoritmo selecionado. En la mayoría
-de los casos, a causa del proceso de prueba y error necesario para encontrar
-modelos eficientes se invierte una cantidad enorme de tiempo y recursos en
-la creación de un modelo que se ajuste a los requerimientos del problema
+del Aprendizaje de Máquina, en inglés \emph{Machine Learning}(ML)
+~\brackcite{hey2020machinelearning}. Sin embargo, el uso de estás técnicas está
+sujeto a conocimiento de mucha teoría matemático-computaciona
+~\brackcite{dyrmishi2019decision}, lo cual constituye una barrera para nuevos
+usuarios~\brackcite{crisan2021fits}. Por ejemplo, para científicos de esta
+rama, crear una aplicación de ML está sujeto a la selección de disímiles tipos
+de algoritmos(redes neuronales, modelos bayesianos, algoritmos de
+\emph{clustering}, etc) y, a la vez, a ajustar los númerosos hiperparámetros
+del algoritmo selecionado. En la mayoría de los casos, a causa del proceso de
+prueba y error necesario para encontrar modelos eficientes se invierte una
+cantidad enorme de tiempo y recursos en la creación de un modelo que se ajuste
+a los requerimientos del problema
 
 Como consecuencia del costo de empleo de algoritmos y técnicas de ML, surge una
 nueva idea para automatizar el proceso de ML, evitando el proceso del costo de
-modelación y configuración de los hiperparámetros. El Aprendizaje de Máquina
-Automático, en inglés \emph{Automated Machine Learning}(AutoML) ha facilitado
-el proceso de implementación, despliegue, modelación y desarrollo de algoritmos
-de ML.
+modelación y configuración de los hiperparámetros~\brackcite{thornton2013auto}.
+El Aprendizaje de Máquina Automático, en inglés \emph{Automated Machine
+Learning}(AutoML) ha facilitado el proceso de implementación, despliegue,
+modelación y desarrollo de algoritmos de ML~\brackcite{paszke2019pytorch}.
 
 El surgimiento de AutoML ha reducido la carga de trabajo de los científicos de
 datos y ha permitido una mayor creación de modelos usando algoritmos de ML. De
@@ -28,7 +30,7 @@ enfoques de aprendizaje automático a los usuarios no expertos que están
 interesados en aplicarlos. Con el crecimiento exponencial del poder
 computacional y de la cantidad de datos datos que se generan en la actualidad,
 AutoML se ha convertido en un tema de creciente importancia tanto en la
-industria como en la academia.
+industria como en la academia~\brackcite{he2021automl}. . 
 
 Aún así existe una carencia en cuanto a reusar conocimiento previamente
 generado. Una de las limitaciones presentes en los primeros sistemas de AutoML
@@ -51,13 +53,14 @@ obtenidos en problemas similares previamente resueltos.\\
 
 A pesar de la creciente cantidad de herramientas de AutoML desarrolladas en los
 últimos años, la generación automática de soluciones de ML es
-computacionalmente costosa y toma mucho tiempo. Las razones de estos defectos
-incluyen un espacio de búsqueda muy grande, tanto para algoritmos simples de ML
-como para otras arquitecturas más complejas como redes neuronales, y que la
-evaluación de incluso un solo algoritmo en un conjunto de datos grande puede requerir
-horas. Esto hace que el proceso de desarrollo de modelos de ML siga siendo un
-proceso lento, limitando la aplicabilidad de AutoML a problemas prácticos en la
-industria, así como su potencial para acelerar la investigación científica.\\
+computacionalmente costosa y toma mucho tiempo~\brackcite{crisan2021fits}. Las
+razones de estos defectos incluyen un espacio de búsqueda muy grande, tanto
+para algoritmos simples de ML como para otras arquitecturas más complejas como
+redes neuronales, y que la evaluación de incluso un solo algoritmo en un
+conjunto de datos grande puede requerir horas. Esto hace que el proceso de
+desarrollo de modelos de ML siga siendo un proceso lento, limitando la
+aplicabilidad de AutoML a problemas prácticos en la industria, así como su
+potencial para acelerar la investigación científica.\\
 
 \textbf{\Large Motivación}\\
 
@@ -71,8 +74,8 @@ algoritmos y las configuraciones de sus hiperparámetros.
 
 Mediante meta-learning, se intenta ganar perspectiva sacada de los meta-datos
 de experimentos de aprendizaje automático. Los resultados de cada entrenamiento
-son guardados con caracterizaciones del conjunto de datos y sus detalles de rendimiento,
-y son usados en las ejecuciones futuras.
+son guardados con caracterizaciones del conjunto de datos y sus detalles de
+rendimiento, y son usados en las ejecuciones futuras.
 
 Sin embargo, estas herramientas de meta-learning no son suficientemente
 flexibles para ser utilizadas en problemas prácticos que requieren la
@@ -87,12 +90,12 @@ Esta tesis forma parte de las líneas de investigación del grupo de Inteligenci
 Artificial de la Facultad de Matemática y Computación de la Universidad de La
 Habana. En dicho grupo se ha diseñado el sistema de AutoGOAL, por lo que esta
 herramienta es la usada para la incorporación de conocimiento experto mediante
-meta-learning. AutoGOAL es un sistema AutoML implementado como una biblioteca
-de código abierto en el lenguaje de programación Python. Utiliza técnicas
-heterogéneas, que a diferencia de otros sistemas, puede construir
-automáticamente flujos de aprendizaje automático que combinen técnicas y
-algoritmos de diferentes bibliotecas, incluidos clasificadores lineales,
-herramientas de procesamiento de lenguaje natural y redes neuronales.\\
+meta-learning. AutoGOAL~\brackcite{autogoal} es un sistema AutoML implementado
+como una biblioteca de código abierto en el lenguaje de programación Python.
+Utiliza técnicas heterogéneas, que a diferencia de otros sistemas, puede
+construir automáticamente flujos de aprendizaje automático que combinen
+técnicas y algoritmos de diferentes bibliotecas, incluidos clasificadores
+lineales, herramientas de procesamiento de lenguaje natural y redes neuronales.\\
 
 \textbf{\Large Objetivos}\\
 
