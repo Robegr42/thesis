@@ -2,19 +2,19 @@
 
 Este capítulo proporciona una introducción a los campos y los trabajos que
 están relacionados con las técnicas utilizadas en esta tesis. Se comienza
-introduciendo las ideas básicas de meta-learning
-(Sección \ref{section:Metalearning}), definiendo el problema que este campo
+introduciendo las ideas básicas de meta-learning~
+(Sección~\ref{section:metalearning}), definiendo el problema que este campo
 resuelve, explicando la estructura de un sistema de meta-learning y varias de
 sus aplicaciones. El objetivo fundamental de este trabajo es añadir componentes
-de meta-learning a un sistema de Automated Machine Learning (AutoML), así que
-este campo es introducido (Sección \ref{section:AutoML}). Se presentan
+de meta-learning a un sistema de Automated Machine Learning~(AutoML), así que
+este campo es introducido~(Sección~\ref{section:AutoML}). Se presentan
 diferentes formulaciones teóricas del problema de AutoML y se describen los
 componentes fundamentales de un proceso de AutoML, así como ejemplos de
 sistemas para cada uno de los enfoques existentes. El área de interés de esta
 investigación es la aplicación de meta-learning para la selección de modelos,
 en concreto, su utilización para añadir conocimiento en sistemas AutoML, por
 lo que varias técnicas para la solución de este problema son estudiadas
-(Sección \ref{section:MetaAutoML}).
+(Sección~\ref{section:meta-with-AutoML}).
 
 \section{Meta-Learning}\label{section:metalearning}
 
@@ -57,13 +57,13 @@ lo cual se refiere al proceso de mejorar un algoritmo de aprendizaje a través
 de múltiples episodios de aprendizaje. En contraste, el aprendizaje automático
 convencional mejora las predicciones del modelo sobre múltiples instancias de
 datos. Durante el \textit{base-learning} o aprendizaje base, un algoritmo de
-aprendizaje interior (o inferior/base) resuelve una tarea como clasificación
+aprendizaje interior~(o inferior/base) resuelve una tarea como clasificación
 de imágenes, definida por un conjunto de datos y un objetivo. Durante
-\emph{meta-learning}, un algoritmo externo (o superior/meta) actualiza el
+\emph{meta-learning}, un algoritmo externo~(o superior/meta) actualiza el
 algoritmo interior de tal manera que el modelo que aprende mejora un objetivo
 externo. Los episodios de aprendizaje de la tarea base pueden ser vistos como
 una forma de proveer las instancias necesitadas por el algoritmo externo para
-aprender el algoritmo de aprendizaje base~\cite{hospedales2021metalearning}.
+aprender el algoritmo de aprendizaje base~\brackcite{hospedales2021metalearning}.
 
 Meta-learning difiere de \textit{base-learning} en el alcance del nivel de
 adaptación. Mientras que el aprendizaje en un nivel base está enfocado en
@@ -84,7 +84,7 @@ meta-learning es a menudo una fuente de confusión
 
 \begin{description}
 	\item[Transfer Learning (TL):] TL usa experiencia pasada de una tarea
-    fuente para mejorar el aprendizaje (la velocidad, la eficiencia de los
+    fuente para mejorar el aprendizaje~(la velocidad, la eficiencia de los
     datos, la precisión) de una tarea destino. TL se refiere a esta área de
     problemas como familia de soluciones, y para su solución hace uso de la
     transferencia de parámetros, más el ajuste opcional de los mismos. En
@@ -141,7 +141,7 @@ Una posibilidad es depender de conocimiento experto y otra posibilidad es usar
 un procedimiento automático. 
 
 La obtención de meta-conocimiento a través del conocimiento experto se realiza
-en la forma de reglas que coinciden con las características de dominio
+en la forma de reglas que coinciden con las características de dominio~
 (conjunto de datos) y con algoritmos de aprendizaje automático. Estas reglas
 pueden ser hechas a mano, teniendo en cuenta resultados teóricos, el
 conocimiento humano y evidencia empírica. Sin embargo, este método tiene serias
@@ -149,16 +149,16 @@ desventajas: el conjunto de reglas resultantes probablemente esté incompleto y
 el mantenimiento del conjunto de reglas a medida que nuevos algoritmos se
 vuelven disponibles es problemático. Como resultado, la mayoría de la
 investigación se ha enfocado en métodos automáticos
-~\cite{bradzil2017metalearning}.
+~\brackcite{bradzil2017metalearning}.
 	
 Para la automatización de la adquisición de conocimiento es necesario un
 conjunto de problemas y un conjunto de algoritmos de aprendizaje automático
 que queremos considerar. Entonces se necesita definir un método experimental
 que determine con cuáles alternativas deberíamos experimentar y en qué orden.
-Por ejemplo, dado un conjunto de datos (con ciertas características) y
+Por ejemplo, dado un conjunto de datos~(con ciertas características) y
 ciertos algoritmos de aprendizaje automático, se producen resultados de
 rendimiento para cada uno de estos algoritmos a través de un método de
-evaluación (como validación cruzada). Los resultados y la estructura de los
+evaluación~(como validación cruzada). Los resultados y la estructura de los
 algoritmos aplicados, junto con la caracterización de los conjuntos de datos,
 representan un pedazo de información que es guardado en una base de
 meta-conocimiento. El proceso es entonces repetido para otras combinaciones de
@@ -185,7 +185,7 @@ identificar el mejor algoritmo. Este proceso puede ser dividido en dos fases
 separadas. La Figura~\ref{fig:application} muestra un diagrama de como ocurre
 este proceso.
 
-En la primera fase (Figura~\ref{fig:application} a) el objetivo es identificar
+En la primera fase~(Figura~\ref{fig:application} a) el objetivo es identificar
 un subconjunto adecuado de algoritmos de aprendizaje automático basados en un
 conjunto de datos de entrada. El método de selección empleado en ese proceso se basa en
 el meta-conocimiento. Dado un nuevo conjunto de datos sus meta-características son
@@ -194,9 +194,9 @@ los conjunto de datoss similares. Por lo general, el resultado de esta fase es
 representado en la forma de un subconjunto rankeado de algoritmos de
 aprendizaje automático.
 
-La segunda fase (Figura~\ref{fig:application} b) tiene el objetivo de buscar a
+La segunda fase~(Figura~\ref{fig:application} b) tiene el objetivo de buscar a
 través del espacio reducido. Cada opción es evaluada empleando una métrica de
-rendimiento determinado (por ejemplo, \textit{accuracy}). Usualmente, la
+rendimiento determinado~(por ejemplo, \textit{accuracy}). Usualmente, la
 validación cruzada es usada para identificar el mejor algoritmo de aprendizaje.
 Es necesario notar que el meta-conocimiento no elimina completamente la
 necesidad del proceso de búsqueda, sino que proporciona una búsqueda más
@@ -235,7 +235,7 @@ recursos computacionales.
 
 \section{AutoML}\label{section:AutoML}
 
-\textit{Automated Machine Learning} (AutoML) o Aprendizaje de Máquinas
+\textit{Automated Machine Learning}~(AutoML) o Aprendizaje de Máquinas
 Automático es el campo que se enfoca en los métodos que tienen el objetivo de
 automatizar diferentes etapas del proceso de aprendizaje automático. Como su
 nombre indica, AutoML es la intersección de dos campos: automatización y ML.
@@ -296,22 +296,22 @@ automatizar el flujo de trabajo necesario para producir un modelo de
 aprendizaje automático. Los flujos de algoritmos de aprendizaje automático
 constan de varios pasos secuenciales que realizan desde la extracción de datos
 y el preprocesamiento hasta el entrenamiento y la implementación del modelo
-~\cite{web-mlpipe}.
+~\brackcite{web-mlpipe}.
 
 \subsection{Definición del problema}\label{subsec:automl_problem_definition}
 
 Dos problemas importantes en AutoML son que ningún algoritmo de ML obtiene los
 mejores resultados en todos los conjunto de datoss, también conocido como
-\textit{No Free Lunch Problem} \cite{wolpert1995no}, y que algunos métodos de
+\textit{No Free Lunch Problem}~\brackcite{wolpert1995no}, y que algunos métodos de
 aprendizaje automático dependen crucialmente de la optimización de
 hiperparámetros. Para la resolución de estos problemas AutoML se apoya de dos
-áreas o subtareas que constituyen su base: la selección de modelos
-(\textit{Model Selection}, MS)~\cite{thornton2013auto} y la optimización de
+áreas o subtareas que constituyen su base: la selección de modelos~
+(\textit{Model Selection}, MS)~\brackcite{thornton2013auto} y la optimización de
 hiperparámetros (\textit{Hyperparameter Optimization}, HPO)
-~\cite{fuerer2019hyperparameter}. La combinación de estas áreas se refiere al
+~\brackcite{fuerer2019hyperparameter}. La combinación de estas áreas se refiere al
 problema de AutoML como un problema de selección combinada de modelos y
-optimización de hiperparámetros (\textit{Combined Algorithm Selection and
-Hyperparameter Optimization}, CASH)~\cite{thornton2013auto}.
+optimización de hiperparámetros~(\textit{Combined Algorithm Selection and
+Hyperparameter Optimization}, CASH)~\brackcite{thornton2013auto}.
 
 \subsubsection{Selección de Modelos}
 
@@ -323,22 +323,22 @@ si el algoritmo permite una entrada no lineal, y es útil considerar estos
 aspectos en la automatización. Para realizar esta tarea un sistema AutoML
 realiza una búsqueda sobre un conjunto de algoritmos disponibles, con el
 objetivo de determinar cuáles de ellos pertenecen al flujo óptimo de un
-problema determinado~\cite{li2021automl}.
+problema determinado~\brackcite{li2021automl}.
 
 \subsubsection{Optimización de Hiperparámetros}
 
 Los algoritmos de aprendizaje automático son altamente configurables por sus
-hiperparámetros (HP). Estos últimos a menudo influencian substancialmente el
+hiperparámetros~(HP). Estos últimos a menudo influencian substancialmente el
 comportamiento y la velocidad del algoritmo y tienen que ser seleccionados con
 cuidado con el objetivo de alcanzar un rendimiento óptimo. Tanto para expertos
 como para no expertos, ajustar los hiperparámetros para optimizar el
 rendimiento del modelo puede ser una tarea difícil y tediosa, a menudo es
 bastante costosa y propensa a errores, especialmente cuando son seleccionados
 en un proceso de prueba y error. Los algoritmos de optimización de
-hiperparámetros (HPO) identifican automáticamente una configuración de
-hiperparámetros (HPC) buena para un algoritmo de ML, reduciendo así el esfuerzo
+hiperparámetros~(HPO) identifican automáticamente una configuración de
+hiperparámetros~(HPC) buena para un algoritmo de ML, reduciendo así el esfuerzo
 humano. Por lo tanto, una de las tareas fundamentales de AutoML es ajustarlos
-para optimizar el rendimiento de los algoritmos de ML~\cite{li2021automl}.
+para optimizar el rendimiento de los algoritmos de ML~\brackcite{li2021automl}.
 
 \section{Meta-Learning en AutoML}\label{section:meta-with-AutoML}
 
@@ -431,7 +431,7 @@ entre ellas:
     caracterizan problemas supervisados y son indirectamente extraídas.
     Requieren la definición de hiperparámetros: el algoritmo de aprendizaje,
     la medida de evaluación usada para comprobar el rendimiento del modelo y
-    el procedimiento empleado para calcularla (por ejemplo, validación cruzada).
+    el procedimiento empleado para calcularla~(por ejemplo, validación cruzada).
 \end{description}
 
 Los primeros tres grupos representan los enfoques más comunes y tradicionales
@@ -452,7 +452,7 @@ tareas. Este tipo de estrategias ayuda a disminuir el costo de aplicar AutoML,
 al relacionar un nuevo conjunto de datos con los mejores flujos obtenidos en
 problemas similares previamente resueltos. La habilidad de los sistemas de
 computación de guardar virtualmente grandes cantidades de experiencias pasadas
-de aprendizaje (en forma de meta-datos) abre una gran cantidad de oportunidades
+de aprendizaje~(en forma de meta-datos) abre una gran cantidad de oportunidades
 de usar esa experiencia en maneras completamente diferentes
 ~\brackcite{vanschoren2018metalearning}.
 
@@ -468,7 +468,7 @@ soluciones eficaces para una amplia gama de tareas y dominios. Por esta razón,
 se utiliza de AutoGOAL\brackcite{estevanellhacia}, que destaca por su
 capacidad de abordar diferentes dominios combinando de forma transparente
 técnicas y herramientas dispares. AutoGOAL usa como método de optimización
-\textit{Probabilistic Grammatical Evolution}~\brackcite{estevez2021general} (PGE),
+\textit{Probabilistic Grammatical Evolution}~\brackcite{estevez2021general}~(PGE),
 que no había sido usado anteriormente junto con meta-learning, lo que añade
 complejidad a la propuesta. El uso de esta estrategia de meta-learning
 permitirá disminuir el costo de aplicar AutoML y generalizar AutoML a dominios
