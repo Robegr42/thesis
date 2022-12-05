@@ -1,3 +1,55 @@
 \begin{conclusions}
-    Conclusiones
+    La inteligencia artificial, y en particular el aprendizaje automático, es
+    cada vez más demandado en la industria, debido al potencial que tiene para
+    automatizar los procesos más complejos. Las organizaciones están repletas
+    de datos, pero carecen de personas con la experiencia técnica necesaria
+    para transformar estos datos en conocimientos prácticos
+    ~\brackcite{miller2017quant}. Entre las principales dificultades para
+    aplicar extensivamente técnicas de aprendizaje automático en problemas
+    reales, están la poca disponibilidad de expertos unido al costo de diseñar,
+    implementar y evaluar este tipo de soluciones.
+
+    Las organizaciones se están volcando cada vez más hacia la automatización
+    en el trabajo de la ciencia de datos, con el objetivo de liberar a los
+    expertos de las tareas menos creativas en la implementación de sistemas de
+    aprendizaje automático. Por lo tanto, han comenzado con la adopción de
+    técnicas que automatizan la creación de modelos de aprendizaje automático
+    ~\brackcite{drozdal2020trust, wang2019humanai}. Sin embargo, la adopción de
+    esta tecnología en entornos empresariales ha tenido dificultades.
+    Actualmente, las herramientas de AutoML tienen restricciones respecto a lo
+    que pueden realizar de manera flexible~\brackcite{crisan2021fits}.
+
+    Una de las limitaciones presente en los primeros sistemas de AutoML es su
+    inhabilidad de reusar conocimiento previo para solucionar nuevas tareas.
+    Para cerrar esta brecha, las herramientas de AutoML comenzaron a aplicar
+    técnicas de meta-learning, las cuales tienen el objetivo de obtener modelos
+    para nuevas tareas usando experiencias de aprendizaje anteriores. Este
+    tipo de estrategias ayudan a disminuir el costo de aplicar AutoML, al
+    relacionar un nuevo conjunto de datos con los mejores flujos obtenidos en
+    problemas similares previamente resueltos.
+
+    Aunque existen varias herramientas de meta-learning que han sido exitosas
+    al aplicarse a AutoML, resolviendo problemas específicos de inteligencia
+    artificial, estas herramientas son aún poco flexibles para ser utilizadas
+    en problemas prácticos que requieren la combinación de algoritmos y
+    tecnologías de diferente naturaleza.
+
+    El enfoque desarrollado se recomienda como un paso preliminar para otras
+    soluciones más costosas computacionalmente, como por ejemplo, para la
+    inicialización de sistemas de AutoML. En esta investigación AutoGOAL
+    también es empleado como herramienta complementaria en el proceso de
+    búsqueda de flujos. Por lo tanto, se describe como se realiza la
+    incorporación de conocimiento experto a la estrategia de búsqueda utilizada
+    por AutoGOAL: Evolución Gramatical Probabilística.
+
+    La propuesta de meta-learning consiste en la selección de un conjunto de
+    flujos de algoritmos para ser propuestos en la inicialización de la
+    optimización de AutoGOAL. La elección de este conjunto de flujos se realiza
+    mediante un enfoque de ranking, en el que para un nuevo conjunto de datos
+    se seleccionan los \emph{k} mejores flujos de algoritmos.
+
+    En experimentos sintéticos se demostró que la adición de metalearning
+    permite disminuir hasta 100 iteraciones menos el costo de la optimización
+    en el 62.5\% de los experimentos.
+
 \end{conclusions}
