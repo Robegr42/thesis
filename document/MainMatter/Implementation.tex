@@ -1,1 +1,212 @@
 \chapter{Detalles de Implementación y Experimentos}\label{chapter:implementation}
+
+El objetivo de este capítulo es evaluar la propuesta de meta-learning en la
+tarea de inicialización de un intenso proceso de optimización. El estudio
+realizado se enfoca solo en el rendimiento del algoritmo de meta-learning en
+los conjuntos de datos utilizados contra el algoritmo estándar de AutoGOAL.
+En este capítulo se explica el uso de los conjuntos de datos que sirvieron
+para probar la solución propuesta~(Sección \ref{sec:datasets}), como se
+insertó la propuesta en la maquinária de AutoGOAL~(Sección \ref{sec:det_impl}),
+se muestran los resultados obtenidos~(Sección \ref{sec:results}) y por último
+se hace una discusión de los mismos~(Sección \ref{sec:disc}.)
+
+La experimentación posteriormente explicada se hace en 30 ejecuciones sobre
+cada problema con cada uno de los algoritmos de búsqueda usados. De estas
+ejecuciones se ralizará posteriormente un análisis estadístico a la hora de
+proponer los resultados.
+
+\section{Conjuntos de Datos}\label{sec:datasets}
+
+Para la evaluación de la propuesta, se utilizaron conjuntos de datos
+sintéticos. Esta opción viene dada por el tiempo de entrenamiento que tomaría
+usar conjuntos de datos más genéricos, los cuales se pueden obtener de
+distintos sitios en INTERNET. Además, está vía nos permite medir con mayor
+precisión la similitud entre problemas, incluso en algunos tipos de conjuntos
+esto se hace práticamente imposible en algunos. Los problemas usados constan
+de 2 dimensiones.
+
+En la experimentación hecha se utilizan 4 tipos de problemas de la misma
+naturaleza, como se explicó anteriormente. Los resultados obtenidos de estos
+problemas son tomados para el entrenamiento del modelo propuesto para realizar
+metalearning. Sobre este mismo conjunto es que se prueba la propuesta y a la
+vez con con 4 nuevos problemas de distintas similitudes con los anteriores.
+De esta forma se analiza a efectividad de la solución contra nuevos problemas
+y se comprueba, de mejor forma, esta efectividad.
+
+\section{Algoritmos}
+
+Al igual que los conjuntos de datos, los algoritmos usados son de carácter
+sintético. Esto se basa en la misma idea explicada en la sección anterior. Los
+algoritmos tendrán, como es de esperar, una función de efectividad que los
+evalue con respecto a un determinado problema. Dicha función dependerá de los
+valores que caractericen los problemas~(2 como ya fue mencionado) y los
+hiperparámetros de los algoritmos, los cuales poseen también dimensión 2.
+
+\section{Implementación}\label{sec:det_impl}
+
+Para la implementación de la propuesta dada se le incorpora al código fuente
+de AutoGOAL varias funcionalidades. Esto va a permitir una experimentación
+detallada de la propuesta debido a facilidades con las que cuenta el propio
+sistema.
+
+\subsection{Fase de Entrenamiento}
+
+En la primera fase de la experimentación se ejecuta AutoGOAL sobre 4 problemas
+previamente definidos. Esta ejecución se realiza sobre una búsqueda aleatoria,
+la cual ya se encuentra implementada en el sistema. Estos serán los problemas
+de los cuales se extraerán todos los datos que caractericen los mismos, así
+como el flujo de algoritmo que le da solución. Además se guarda la efectividad
+de dicho flujo, siendo este factor el más determinante de la experimentación
+realizada. Todos estos aspectos ya se encuentran predefinidos en AutoGOAL, por
+lo cual se hace menos complejo el proceso al no tener la necesidad de crearse
+o definirse nuevas estructuras.
+
+\subsubsection{Extracción de los Mejores Flujos}
+
+Para seleccionar las mejores variantes de algoritmos que resuelven un
+determinado problema, los cuales serán con los que se entrenen el algoritmo
+de metalearning, se usa la efectividad generada por dichos algoritmos sobre
+el problema. Bajo esta condición se garantiza la llegada a una solución
+prometedora en un menor tiempo, ya que ajusta de mejor forma la generación de
+valores óptimos de hiperparámetros en posteriores iteraciones del algoritmo de
+búsqueda.
+
+En esta experimentación se realizan tres tipos de muestras para crear el
+algoritmo de metalearning, teniendo en cuenta la cantidad de algoritmos a
+extraer de las ejecuciones ya realizadas. Sea \emph{k} la cantidad de
+algoritmos seleccionados, se proponen una experimentación para
+$k \in \lbrace 10, 25, 50 \rbrace$
+
+\subsubsection{Algoritmo de Búsqueda con Metalearning}
+
+Con los datos previamente analizados, se define un algoritmo de búsqueda que
+use metalearning. Dicho algoritmo se basa en una especie de
+\emph{precalentamiento} del algoritmo de optimización que utiliza AutoGOAL
+(\emph{Gramatical Evolution}). Con esta estrategia se acota los valores de~
+generación de los hiperparámetros de los algoritmos que encuentre AutoGOAL.
+Esta acotación se genera a partir de usar los hiperparámetros de los algoritmos
+usados como entrenamiento, de esta forma en futuras iteraciones se buscan
+valores similares a los de los algoritmos que fueron más prometedores en
+ejecuciones previas.  
+
+\subsection{Experimentación}
+
+Para la fase de experimentación se propone ver la efectividad del algoritmo
+propuesto contra la búsqueda clásica de AutoGOAL. En primer lugar se ejecucuta
+una búsqueda aleatoria de flujos de algoritmos con los 4 problemas principales
+de la fase de entrenamiento. Luego se hacen 30 ejecuciones del algoritmo de
+búsqueda de AutoGOAL, para cada uno de los problemas mencionados. En este punto
+se entrena el algoritmo de metalearning con los mejores flujos de las búsquedas
+aleatorias, para cada uno de los valores de \emph{k} propuestos y se
+realizan 30 ejecuciones de este algoritmo con los mismos problemas para cada
+\emph{k}. Con este proceso se busca analizar la efectividad de metalearning
+contra los mismos problemas con los que fue entrenado.
+
+Como segunda fase y para comprobar una mejor versatilidad del algoritmo se
+propone un proceso parecido con 4 nuevos problemas. El proceso consta de
+ejecucutar AutoGOAL con estos nuevos problemas y luego el algoritmo de
+metalearning previamente entrenado y de esta forma ver la respuesta de
+metalearning para nuevos problemas de similitudes variadas. La similitud entre
+estos problemas al ser de 2 dimensiones se meide usando la distancia euclideana.
+
+\section{Resultados}\label{sec:results}
+
+Como resultado del proceso de experimentación anteriormente explicado se
+obtienen los siguientes datos.
+
+Como se muestra en la Tabla 3.1 y la Tabla 3.2 se tienen los valores de media
+y mediana de las 30 ejecuciones realizadas para cada problema. Se propone
+obtener, mediante la efectividad de los algoritmos, el mejor valor de este
+parámetro. Se compara para el algoritmo de búsqueda de AutoGOAL y para el
+algoritmo con metalearning, usando los valores de \emph{k} antes mencionados.
+La comparación se hace contra cantidad de iteraciones, viendo en cual se
+obtiene el valor máximo.Con estas métricas se medirá la eficacia de la
+propuesta de metalearning y su versatilidad ante la resolución de problemas
+contra los métodos clásicos.  
+
+\begin{table}[htb]
+	\centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{3}{|}{} & \multicolumn{3}{|c|}{PGE+Metalearning}\\
+    \hline
+    Valor & Problema & PGE+Metalearning & $k=10$ &  $k=25$ &  $k=50$\\
+    \hline
+    Mediana & 1 & 237.5 & 229.0 & 320.5 & 229.0\\
+    \hline
+    Media & 1 & 244.266 & 307.866 & 361.133 & 365.033\\
+    \hline
+    Mediana & 2 & 229.5 & 248.0 & 282.0 & 248.0\\
+    \hline
+    Media & 2 & 300.7 & 293.766 & 293.766 & 297.733\\
+    \hline
+    Mediana & 3 & 260.0 & 188.0 & 258.5 & 188.0\\
+    \hline
+    Media & 3 & 249.433 & 252 & 263.8 & 292.033\\
+    \hline
+    Mediana & 4 & 444.5 & 480.5 & 451.5 & 480.5\\
+    \hline
+    Media & 4 & 465.2 & 487.633 & 481.166 & 444.433\\
+    \hline
+    \end{tabular}
+    \caption{Problemas Iniciales. Comparación de PGE y PGE+Metalearning}
+\end{table}
+
+\begin{table}[htb]
+	\centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{3}{|}{} & \multicolumn{3}{|c|}{PGE+Metalearning}\\
+    \hline
+    Valor & Problema & PGE+Metalearning & $k=10$ &  $k=25$ &  $k=50$\\
+    \hline
+    Mediana & 1 & 274.0 & 186.0 & 211.5 & 186.0\\
+    \hline
+    Media & 1 & 294.633 & 229.533 & 296.5 & 306.233\\
+    \hline
+    Mediana & 2 & 156.5 & 215.0 & 242.0 & 215.0\\
+    \hline
+    Media & 2 & 219.7 & 253.8 & 295.566 & 331.933\\
+    \hline
+    Mediana & 3 & 409.5 & 384.5 & 309.5 & 384.5\\
+    \hline
+    Media & 3 & 397.9 & 381.333 & 370.666 & 434.766\\
+    \hline
+    Mediana & 4 & 574.0 & 383.5 & 461.0 & 383.5\\
+    \hline
+    Media & 4 & 562.033 & 437.033 & 461.166 & 557.433\\
+    \hline
+    \end{tabular}
+    \caption{Problemas de Experimentación. Comparación de PGE y PGE+Metalearning}
+\end{table}
+
+\section{Discusión}\label{sec:disc}
+
+Mediante el proceso de experimentación puede observarse como la propuesta
+mejora las soluciones estándar de AutoGOAL. Los valores de mediana, los cuales
+dan mayor validez a los mismos, muestran esta mejoría. Se llega en muchos
+casos, inclusos en problemas con los cuales se enfreta metalearning por
+primera vez, una rapidez de casi 100 iteraciones menos que PGE(Tabla 3.2,
+problemas 1 y 4).
+
+Los resultados arrojados por la experimentación aunque no son muy concisos
+muestran como metalearning es un buen enfoque a aplicar en los sistemas de
+AutoML. Los valores sugieren un incremento de la eficacia en las soluciones
+con metalearning, sobre todo en cuanto a la mediana de las ejecuciones, el
+cual es un valor más acertado a la hora de comparar las mismas. Otro punto a
+destacar sería la estrategia para escoger un valor o rango de valores de
+\emph{k} óptimos con el cual se obtenga el mejor rendimiento de la solución,
+dado que con valores pequeños quizas se pierdan soluciones de buenos
+resultados y con valores grandes pueden analizarse soluciones infactibles.
+
+El método propuesto tiene también algunas limitaciones, las cuales se pueden
+mejorar en trabajos futuros. Con respecto a las métricas usadas pudiera
+hacerse necesario una experimentación mas exhaustiva. Sin embargo, en
+escenarios prácticos, puede ser necesario equilibrar diferentes métricas de
+rendimiento, incluido también el uso del tiempo y la memoria, y cualidades más
+subjetivas como la interpretabilidad de los modelos o su capacidad para lidiar
+con datos sesgados. El enfoque de optimizar una métrica principal sujeta a
+restricciones de tiempo y memoria usada en AutoGOAL, y, por lo tanto, también
+en la propuesta diseñada, es insuficiente en un escenario en el que el usuario
+final tiene que decidir sobre cuestiones prácticas como el despliegue de estos
+flujos en un sistema de producción.
