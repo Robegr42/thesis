@@ -5,10 +5,10 @@ tarea de inicialización de un intenso proceso de optimización. El estudio
 realizado se enfoca solo en el rendimiento del algoritmo de meta-learning en
 los conjuntos de datos utilizados contra el algoritmo estándar de AutoGOAL.
 En este capítulo se explica el uso de los conjuntos de datos que sirvieron
-para probar la solución propuesta (Sección \ref{sec:datasets}), como se
-insertó la propuesta en la maquinária de AutoGOAL (Sección \ref{sec:det_impl}),
-se muestran los resultados obtenidos (Sección \ref{sec:results}) y por último
-se hace una discusión de los mismos (Sección \ref{sec:disc}.)
+para probar la solución propuesta~(Sección \ref{sec:datasets}), como se
+insertó la propuesta en la maquinária de AutoGOAL~(Sección \ref{sec:det_impl}),
+se muestran los resultados obtenidos~(Sección \ref{sec:results}) y por último
+se hace una discusión de los mismos~(Sección \ref{sec:disc}.)
 
 La experimentación posteriormente explicada se hace en 30 ejecuciones sobre
 cada problema con cada uno de los algoritmos de búsqueda usados. De estas
@@ -39,7 +39,7 @@ Al igual que los conjuntos de datos, los algoritmos usados son de carácter
 sintético. Esto se basa en la misma idea explicada en la sección anterior. Los
 algoritmos tendrán, como es de esperar, una función de efectividad que los
 evalue con respecto a un determinado problema. Dicha función dependerá de los
-valores que caractericen los problemas(2 como ya fue mencionado) y los
+valores que caractericen los problemas~(2 como ya fue mencionado) y los
 hiperparámetros de los algoritmos, los cuales poseen también dimensión 2.
 
 \section{Implementación}\label{sec:det_impl}
@@ -82,7 +82,7 @@ $k \in \lbrace 10, 25, 50 \rbrace$
 Con los datos previamente analizados, se define un algoritmo de búsqueda que
 use metalearning. Dicho algoritmo se basa en una especie de
 \emph{precalentamiento} del algoritmo de optimización que utiliza AutoGOAL
-(\emph{Gramatical Evolution}). Con esta estrategia se acota los valores de
+(\emph{Gramatical Evolution}). Con esta estrategia se acota los valores de~
 generación de los hiperparámetros de los algoritmos que encuentre AutoGOAL.
 Esta acotación se genera a partir de usar los hiperparámetros de los algoritmos
 usados como entrenamiento, de esta forma en futuras iteraciones se buscan
@@ -111,20 +111,26 @@ estos problemas al ser de 2 dimensiones se meide usando la distancia euclideana.
 
 \section{Resultados}\label{sec:results}
 
-
 Como resultado del proceso de experimentación anteriormente explicado se
 obtienen los siguientes datos.
 
 Como se muestra en la Tabla 3.1 y la Tabla 3.2 se tienen los valores de media
-y mediana de las 30 ejecuciones realizadas para cada problema. Con estas
-métricas se medirá la eficacia de la propuesta de metalearning y su
-versatilidad ante la resolución de problemas contra los métodos clásicos.  
+y mediana de las 30 ejecuciones realizadas para cada problema. Se propone
+obtener, mediante la efectividad de los algoritmos, el mejor valor de este
+parámetro. Se compara para el algoritmo de búsqueda de AutoGOAL y para el
+algoritmo con metalearning, usando los valores de \emph{k} antes mencionados.
+La comparación se hace contra cantidad de iteraciones, viendo en cual se
+obtiene el valor máximo.Con estas métricas se medirá la eficacia de la
+propuesta de metalearning y su versatilidad ante la resolución de problemas
+contra los métodos clásicos.  
 
 \begin{table}[htb]
 	\centering
     \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    Valor & Problema & PGE(AutoGOAL) & $k=10$ &  $k=25$ &  $k=50$\\
+    \multicolumn{3}{|}{} & \multicolumn{3}{|c|}{PGE+Metalearning}\\
+    \hline
+    Valor & Problema & PGE+Metalearning & $k=10$ &  $k=25$ &  $k=50$\\
     \hline
     Mediana & 1 & 237.5 & 229.0 & 320.5 & 229.0\\
     \hline
@@ -143,14 +149,16 @@ versatilidad ante la resolución de problemas contra los métodos clásicos.
     Media & 4 & 465.2 & 487.633 & 481.166 & 444.433\\
     \hline
     \end{tabular}
-    \caption{Problemas Iniciales}
+    \caption{Problemas Iniciales. Comparación de PGE y PGE+Metalearning}
 \end{table}
 
 \begin{table}[htb]
 	\centering
     \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    Valor & Problema & PGE(AutoGOAL) & $k=10$ &  $k=25$ &  $k=50$\\
+    \multicolumn{3}{|}{} & \multicolumn{3}{|c|}{PGE+Metalearning}\\
+    \hline
+    Valor & Problema & PGE+Metalearning & $k=10$ &  $k=25$ &  $k=50$\\
     \hline
     Mediana & 1 & 274.0 & 186.0 & 211.5 & 186.0\\
     \hline
@@ -169,10 +177,17 @@ versatilidad ante la resolución de problemas contra los métodos clásicos.
     Media & 4 & 562.033 & 437.033 & 461.166 & 557.433\\
     \hline
     \end{tabular}
-    \caption{Problemas de Experimentación}
+    \caption{Problemas de Experimentación. Comparación de PGE y PGE+Metalearning}
 \end{table}
 
 \section{Discusión}\label{sec:disc}
+
+Mediante el proceso de experimentación puede observarse como la propuesta
+mejora las soluciones estándar de AutoGOAL. Los valores de mediana, los cuales
+dan mayor validez a los mismos, muestran esta mejoría. Se llega en muchos
+casos, inclusos en problemas con los cuales se enfreta metalearning por
+primera vez, una rapidez de casi 100 iteraciones menos que PGE(Tabla 3.2,
+problemas 1 y 4).
 
 Los resultados arrojados por la experimentación aunque no son muy concisos
 muestran como metalearning es un buen enfoque a aplicar en los sistemas de
