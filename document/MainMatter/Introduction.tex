@@ -1,2 +1,134 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
+
+En los últimos años se ha hecho creciente el uso, investigación y aplicación
+del Aprendizaje de Máquina, en inglés \emph{Machine Learning}~(ML)
+~\brackcite{hey2020machinelearning}. Sin embargo, el uso de estás técnicas está
+sujeto a conocimiento de mucha teoría matemático-computacional
+~\brackcite{dyrmishi2019decision}, lo cual constituye una barrera para nuevos
+usuarios~\brackcite{crisan2021fits}. Por ejemplo, para científicos de esta
+rama, crear una aplicación de ML está sujeto a la selección de disímiles tipos
+de algoritmos~(redes neuronales, modelos bayesianos, algoritmos de
+\emph{clustering}, etc) y, a la vez, a ajustar los númerosos hiperparámetros
+del algoritmo selecionado. En la mayoría de los casos, a causa del proceso de
+prueba y error necesario para encontrar modelos eficientes se invierte una
+cantidad enorme de tiempo y recursos en la creación de un modelo que se ajuste
+a los requerimientos del problema.
+
+Como consecuencia del costo de empleo de algoritmos y técnicas de ML, surge una
+nueva idea para automatizar el proceso de ML, evitando el proceso del costo de
+modelación y configuración de los hiperparámetros~\brackcite{thornton2013auto}.
+El Aprendizaje de Máquina Automático, en inglés \emph{Automated Machine
+Learning}~(AutoML) ha facilitado el proceso de implementación, despliegue,
+modelación y desarrollo de algoritmos de ML~\brackcite{paszke2019pytorch}.
+
+El surgimiento de AutoML ha reducido la carga de trabajo de los científicos de
+datos y ha permitido una mayor creación de modelos usando algoritmos de ML. De
+esta forma se reduce el tiempo de ejecución de procesos, ayudando, además, a no
+expertos en el ámbito de la computación. Por lo tanto, AutoML hace accesible
+enfoques de aprendizaje automático a los usuarios no expertos que están
+interesados en aplicarlos. Con el crecimiento exponencial del poder
+computacional y de la cantidad de datos que se generan en la actualidad,
+AutoML se ha convertido en un tema de creciente importancia tanto en la
+industria como en la academia~\brackcite{he2021automl}.
+
+Aún así existe una carencia en cuanto a reusar conocimiento previamente
+generado. Una de las limitaciones presentes en los primeros sistemas de AutoML
+es su falta de poder para reusar conocimiento previo para solucionar nuevas
+tareas. Para cerrar esta brecha, las herramientas de AutoML comenzaron a
+aplicar técnicas de meta-learning, las cuales tienen el objetivo de obtener
+modelos para nuevas tareas usando experiencias previas. Meta-learning, o
+\emph{aprender a aprender}, es la ciencia de observar sistemáticamente cómo se
+desempeñan los diferentes enfoques de aprendizaje automático en una amplia
+gama de tareas de aprendizaje, y luego aprender de esta experiencia, o
+meta-datos, para aprender nuevas tareas mucho más rápido de lo que sería
+posible de otra manera. Esto acelera y mejora drásticamente el diseño
+de algoritmos de aprendizaje automático. Además nos permite reemplazar
+algoritmos diseñados a mano con enfoques novedosos aprendidos de una manera
+basada en datos. Este tipo de estrategias ayudan a disminuir el costo de
+aplicar AutoML, al relacionar un nuevo conjunto de datos con los mejores flujos
+obtenidos en problemas similares previamente resueltos.\\
+
+\textbf{\Large Problema}\\
+
+A pesar de la creciente cantidad de herramientas de AutoML desarrolladas en los
+últimos años, la generación automática de soluciones de ML es
+computacionalmente costosa y toma mucho tiempo~\brackcite{crisan2021fits}. Las
+razones de estos defectos incluyen un espacio de búsqueda muy grande, tanto
+para algoritmos simples de ML como para otras arquitecturas más complejas como
+redes neuronales, y que la evaluación de incluso un solo algoritmo en un
+conjunto de datos grande puede requerir horas. Esto hace que el proceso de
+desarrollo de modelos de ML siga siendo un proceso lento, limitando la
+aplicabilidad de AutoML a problemas prácticos en la industria, así como su
+potencial para acelerar la investigación científica.\\
+
+\textbf{\Large Motivación}\\
+
+En esta tesis se realiza una propuesta para superar estos obstáculos. El
+principal objetivo del enfoque propuesto es asistir a los profesionales de la
+industria, a los investigadores en ciencias de datos y de otras ramas de la
+ciencia en la selección de modelos incorporando un componente en los
+sistemas AutoML, los cuales aumentarán el rendimiento de los mismos, se
+acelerarán los procesos de búsqueda proveyendo un conjunto inicial de
+algoritmos y las configuraciones de sus hiperparámetros.
+
+Mediante meta-learning, se intenta ganar perspectiva sacada de los meta-datos
+de experimentos de aprendizaje automático. Los resultados de cada entrenamiento
+son guardados con caracterizaciones del conjunto de datos y sus detalles de
+rendimiento, y son usados en las ejecuciones futuras.
+
+Sin embargo, estas herramientas de meta-learning no son suficientemente
+flexibles para ser utilizadas en problemas prácticos que requieren la
+combinación de algoritmos y tecnologías de diferente naturaleza. Las técnicas
+actuales de meta-learning se centran principalmente en un subconjunto
+específico de algoritmos, a menudo adaptados a una biblioteca o conjunto de
+herramientas.\\
+
+\textbf{\Large Antecedentes}\\
+
+Esta tesis forma parte de las líneas de investigación del grupo de Inteligencia
+Artificial de la Facultad de Matemática y Computación de la Universidad de La
+Habana. En dicho grupo se ha diseñado el sistema de AutoGOAL, por lo que esta
+herramienta es la usada para la incorporación de conocimiento experto mediante
+meta-learning. AutoGOAL~\brackcite{autogoal} es un sistema AutoML implementado
+como una biblioteca de código abierto en el lenguaje de programación Python.
+Utiliza técnicas heterogéneas, que a diferencia de otros sistemas, puede
+construir automáticamente flujos de aprendizaje automático que combinen
+técnicas y algoritmos de diferentes bibliotecas, incluidos clasificadores
+lineales, herramientas de procesamiento de lenguaje natural y redes neuronales.\\
+
+\textbf{\Large Objetivos}\\
+
+El objetivo general de esta tesis es el diseño de una estrategia de
+meta-learning para métodos genéricos de AutoML. La estrategia implementada
+tendrá el objetivo de acelerar el proceso de búsqueda de AutoML añadiendo
+conocimiento previo, de tal manera que se obtengan mejores resultados en el
+mismo período de tiempo. Para realizar esto será necesario:
+
+\begin{itemize}
+    \item Estudiar diferentes herramientas de meta-learning, así como sistemas
+    de Auto-ML presentes en la literatura.
+    \item Definir una representación para las soluciones generadas de los
+    conjuntos de datos.
+    \item Diseñar un algoritmo para recomendar una lista de soluciones para un
+    nuevo conjunto de datos basado en estos datos.
+    \item Incorporar el conocimiento previo obtenido con meta-learning en
+    AutoGOAL para realizar una búsqueda de algoritmos más eficiente.\\
+    
+\end{itemize}
+
+\textbf{\Large Estructura de la tesis}\\
+
+El resto de la tesis está organizada de la siguiente manera. El Capítulo
+\ref{chapter:state-of-the-art} introduce los problemas de meta-learning y
+AutoML y las técnicas que a menudo son aplicadas para tratar con estos
+problemas. Esto es seguido por un resumen de los trabajos relacionados con
+meta-learning para la selección de algoritmos y de distintas herramientas de
+AutoML. Luego, en el Capítulo \ref{chapter:proposal} se describe la estrategia
+de meta-learning propuesta para AutoML, incluyendo un análisis de las
+meta-características usadas y las estrategias desarrolladas. En el Capítulo
+\ref{chapter:implementation} se exponen brevemente los aspectos de la
+metodología experimental adoptada, se investigan los resultados obtenidos y se
+realiza una discusión de los mismos. Posteriormente, se presentan las
+conclusiones finales de esta tesis y algunas recomendaciones para estudios
+futuros.
